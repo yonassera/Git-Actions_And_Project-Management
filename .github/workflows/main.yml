@@ -1,0 +1,28 @@
+name: Simple CI workflow file
+
+on: 
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      
+      - name: Print output
+        run: echo "CI Running"
+      
+      - name: create and upload artifact
+        run: |
+          echo "Build completed at $(date)" > build-info.txt
+          ls -la
+          
+      - name: Upload build info
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-info
+          path: build-info.txt
