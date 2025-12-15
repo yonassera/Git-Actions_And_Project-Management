@@ -4,3 +4,4 @@
 
 * Git Actions
 * Git Project
+* Git Issues
